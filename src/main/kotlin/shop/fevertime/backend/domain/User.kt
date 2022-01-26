@@ -1,15 +1,22 @@
 package shop.fevertime.backend.domain
 
-import javax.persistence.Entity
-import javax.persistence.GeneratedValue
-import javax.persistence.GenerationType
-import javax.persistence.Id
+import shop.fevertime.backend.utils.jpa.BaseEntityId
+import javax.persistence.*
 
 @Entity
-class User() {
+class User(
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    var id: Long = -1
-        protected set
+    @Column(nullable = false)
+    var username: String,
+
+    @Column(nullable = false)
+    var email: String,
+
+    @Column(nullable = false)
+    var kakaoId: String,
+
+    @Column(nullable = false)
+    var imgUrl: String
+) : BaseEntityId() {
+
 }
