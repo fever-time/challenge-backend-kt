@@ -1,10 +1,14 @@
 package shop.fevertime.backend.domain
 
-import shop.fevertime.backend.utils.jpa.BaseEntityId
 import javax.persistence.*
 
 @Entity
 class User(
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    @Column(insertable = false, updatable = false, nullable = false)
+    val id: Long,
 
     @Column(nullable = false)
     var username: String,
@@ -13,10 +17,14 @@ class User(
     var email: String,
 
     @Column(nullable = false)
+    @Enumerated(value = EnumType.STRING)
+    var role: UserRole,
+
+    @Column(nullable = false)
     var kakaoId: String,
 
     @Column(nullable = false)
     var imgUrl: String
-) : BaseEntityId() {
+) {
 
 }
